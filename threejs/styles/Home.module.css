@@ -1,0 +1,7 @@
+.container {
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  height: 100vh;
+  background-color: rgba(169, 169, 169, 0.473);
+}
