@@ -18,12 +18,26 @@ import Rings from "./Rings";
 import Boxes from "./Box";
 
 const CarShow = ({ selectedCar }) => {
+  const key = {
+    LEFT: 37, //left arrow
+    UP: 38, // up arrow
+    RIGHT: 39, // right arrow
+    BOTTOM: 40, // down arrow
+  };
   return (
     <>
+      {/* orbitcontrols : way for user to interact with the scene like move camera position zoom in and out 
+          maxPolarAngle : setting it to 1.45 means that the user cannot go below the ground if not set then the user can freely go below the scene
+    */}
       <OrbitControls maxPolarAngle={1.45} target={[0, 0.35, 0]} />
       <PerspectiveCamera makeDefault fov={50} position={[3, 2, 5]} />
 
       <color args={[0, 0, 0]} attach="background" />
+
+      {/* using cubecamera here is because cube camera will accept all the light in the scene available and cast shadow on the mesh which is
+       only rendered in side the cubecamera component 
+       resolution: increase the resolution to make the shadow more feel realistic make sure we use this limited because may effect in performance
+       */}
       <CubeCamera resolution={256} frames={Infinity}>
         {(texture) => (
           <>
@@ -32,7 +46,9 @@ const CarShow = ({ selectedCar }) => {
           </>
         )}
       </CubeCamera>
+      {/* our rotating boxes */}
       <Boxes />
+      {/* our spotlight only allows the light to come from one point  */}
       <spotLight
         color={[1, 0.25, 0.7]}
         intensity={1.7}

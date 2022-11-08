@@ -6,6 +6,7 @@ import { Color } from "three";
 function Rings() {
   const itemref = useRef([]);
   useFrame((state, delta) => {
+    // get the time passed from the previous frame
     let elapsed = state.clock.getElapsedTime();
 
     for (let i = 0; i < itemref.current.length; i++) {
@@ -14,7 +15,7 @@ function Rings() {
       let dist = Math.abs(z);
       mesh.position.set(0, 0, -z);
       mesh.scale.set(1 - dist * 0.04, 1 - dist * 0.04, 1 - dist * 0.04);
-
+      // changing color of ring for alternate rings
       let colorScale = 1;
       if (dist > 2) {
         colorScale = 1 - (Math.min(dist, 12) - 2) / 10;

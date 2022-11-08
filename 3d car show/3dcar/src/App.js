@@ -26,6 +26,7 @@ function App() {
   return (
     <div className="App">
       <div className="appcontainer">
+        {/* canvs is the container for our scene so make sure all 3d work should be done inside this canvas */}
         <Canvas shadows>
           <CarShow selectedCar={SelectedCar} />
         </Canvas>
